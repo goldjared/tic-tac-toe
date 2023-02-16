@@ -1,0 +1,25 @@
+start with only console.
+gameboard will be array, have 9 items.
+
+gameboardarray will be inside gameboard obj.
+
+gameboard func ?IIFE
+gameboard obj
+  gameboardarray 9 null,
+  
+  players in a object, will have player name, and if they won or lost round.
+    name, score
+
+  get player 1, player 2
+  start
+    if players continue,
+   
+   
+   
+   
+   
+   
+   
+    load up visual gameboard.
+      visual gameboard will be 9 cells created in js, children of html container.
+      visual gameboard will link to the gameboard array, start with [X*9] for test.
