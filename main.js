@@ -1,7 +1,7 @@
 (function game() {
   const gameBoardStack = (() => {
     const gameBoard = {
-      gameArray: ['x','x','x','x','x','x','x','x','x']
+      gameArray: [null, null, null, null, null, null, null, null, null]
     }
 
     function gameBoardCreate() {
