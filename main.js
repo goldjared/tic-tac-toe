@@ -68,7 +68,16 @@ const game = (() => {
       // console.log(answerKey[i]);
       let evaluation = answerKey[i].map
       (i => game.gameBoardStack.gameBoard.gameArray[i]);
-      console.log(evaluation);
+      console.log('this is eval 1', evaluation)
+      isEvalutionEqual(evaluation);
+
+    }
+
+    function isEvalutionEqual(array){
+      // console.log('this is log1', array)
+      const isMatchingKey = (currentValue) => 
+      currentValue === array[0] && currentValue != null;
+      console.log(array.every(isMatchingKey));
     }
     // console.log(game.gameBoardStack.gameBoard.gameArray);
     
