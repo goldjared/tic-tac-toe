@@ -16,13 +16,19 @@ const game = (() => {
 
     return {gameBoard, gameBoardCreate};
   })();
-  
+
   const playerControl = (() => {
-    //could add a prompt here to modify the player names
-    const players = {
-      player1: 'p1',
-      player2: 'p2',
+    const players = {};
+
+    while(Object.keys(players).length < 2) {
+      function makePlayer(entry){
+        players[entry[0]] = entry[1];
+      }
+      let playerEntry = prompt('Player, enter name, and weapon (name, x/o)')
+      .split(',');
+      makePlayer(playerEntry);
     }
+    
     return players
   })();
 
