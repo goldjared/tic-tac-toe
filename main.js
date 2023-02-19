@@ -1,4 +1,4 @@
-(function game() {
+const game = (() => {
   const gameBoardStack = (() => {
     const gameBoard = {
       gameArray: [null, null, null, null, null, null, null, null, null]
