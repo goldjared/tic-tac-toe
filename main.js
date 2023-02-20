@@ -18,18 +18,30 @@ const game = (() => {
   })();
 
   const playerControl = (() => {
-    const players = {};
+    const player1 = makePlayer(prompt('Player, enter name, and weapon (name, x/o)')
+    .split(','));
+    const player2 = makePlayer(prompt('Player, enter name, and weapon (name, x/o)')
+    .split(','));
 
     while(Object.keys(players).length < 2) {
-      function makePlayer(entry){
-        players[entry[0]] = entry[1];
+    function makePlayer(entry){
+      return {
+        name: entry[0],
+        selection: entry[1]
       }
       let playerEntry = prompt('Player, enter name, and weapon (name, x/o)')
       .split(',');
       makePlayer(playerEntry);
     }
     
-    return players
+    //     players[entry[0]] = entry[1];
+    //   }
+    //   // let playerEntry = prompt('Player, enter name, and weapon (name, x/o)')
+    //   // .split(',');
+    //   // makePlayer(playerEntry);
+    // }
+    
+    return {player1, player2}
   })();
 
   function gamePlay(){
