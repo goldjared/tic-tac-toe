@@ -95,16 +95,21 @@ const game = (() => {
       // console.log('this is log1', array)
       const isMatchingKey = (currentValue) => 
       currentValue === array[0] && currentValue != null;
-      console.log(array.every(isMatchingKey));
+      // console.log(array.every(isMatchingKey));
+      if(array.every(isMatchingKey) === true){
+        console.log(array, 'winner');
+        (array[0] === playerControl.player1.selection) 
+        ? console.log(`${playerControl.player1.name} WON!`) 
+        : console.log(`${playerControl.player2.name} WON!`);
+        //check array[0] = p1 or p2.selection. announce player.
+
+      };
     }
-    // console.log(game.gameBoardStack.gameBoard.gameArray);
-    
-    // console.log(Object.keys(answerKey).length);
-    
-    return answerKey;
+    return isEvalutionEqual;
   }
 
-  return {gameBoardStack, playerControl, gamePlay, gameEvaluator};
+  return {gameBoardStack, playerControl, gamePlay, 
+    gameEvaluator};
 
   
   
