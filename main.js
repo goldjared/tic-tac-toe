@@ -92,9 +92,17 @@ const game = (() => {
     }
 
     function isEvalutionEqual(array){
-      // console.log('this is log1', array)
+      const noNullValue = (currentValue) => 
+      currentValue != null;
       const isMatchingKey = (currentValue) => 
       currentValue === array[0] && currentValue != null;
+
+      if(game.gameBoardStack.gameBoard.gameArray.length > 7 &&
+        game.gameBoardStack.gameBoard.gameArray
+        .every(noNullValue) === true &&
+        array.every(isMatchingKey) === false) {
+        console.log('draw');
+      }
       // console.log(array.every(isMatchingKey));
       if(array.every(isMatchingKey) === true){
         console.log(array, 'winner');
