@@ -52,7 +52,9 @@ const game = (() => {
         function insertValue(target, entry) {
           //get target index, and number to go in there
 
-          game.gameBoardStack.gameBoard.gameArray[target] = entry;
+          game.boardStack.gameBoard.gameArray[target] = 
+          playerControl[currentPlayer].selection;
+          console.log('insertval log, this is array1', game.boardStack.gameBoard.gameArray)
           gameEvaluator();
         // }
       }
@@ -85,8 +87,7 @@ const game = (() => {
     for(let i = 1; i < 9; i++){
       // console.log(answerKey[i]);
       let evaluation = answerKey[i].map
-      (i => game.gameBoardStack.gameBoard.gameArray[i]);
-      console.log('this is eval 1', evaluation)
+      (i => game.boardStack.gameBoard.gameArray[i]);
       isEvalutionEqual(evaluation);
 
     }
@@ -97,8 +98,8 @@ const game = (() => {
       const isMatchingKey = (currentValue) => 
       currentValue === array[0] && currentValue != null;
 
-      if(game.gameBoardStack.gameBoard.gameArray.length > 7 &&
-        game.gameBoardStack.gameBoard.gameArray
+      if(game.boardStack.gameBoard.gameArray.length > 7 &&
+        game.boardStack.gameBoard.gameArray
         .every(noNullValue) === true &&
         array.every(isMatchingKey) === false) {
         console.log('draw');
@@ -116,7 +117,7 @@ const game = (() => {
     return isEvalutionEqual;
   }
 
-  return {gameBoardStack, playerControl, gamePlay, 
+  return {boardStack, playerControl, gamePlay, 
     gameEvaluator};
 
   
