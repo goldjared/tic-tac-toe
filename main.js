@@ -44,18 +44,31 @@ const game = (() => {
     return {player1, player2}
   })();
 
+  
+  const turnNum = (function(n) {
+    return function() {
+      n += 1;
+      
+      return n;
+    }
+  }(0));
+
   function gamePlay(){
     if(playerControl.player1 != '' && playerControl.player2 != '') {
-      // let answer = prompt('play game?', '');
-      // if(answer==='yes') {
-        // gameBoardStack.gameBoardCreate();
-        function insertValue(target, entry) {
-          //get target index, and number to go in there
+      function insertValue(target) {
+        let currentPlayer;
+        
+        if(turnNum() % 2 === 0) {
+          currentPlayer = playerControl.player2;
+        } else {
+          currentPlayer = playerControl.player1;
+        }
+        console.log('currentplayer', currentPlayer);
 
-          game.boardStack.gameBoard.gameArray[target] = 
-          playerControl[currentPlayer].selection;
-          console.log('insertval log, this is array1', game.boardStack.gameBoard.gameArray)
-          gameEvaluator();
+        game.boardStack.gameBoard.gameArray[target] = 
+        currentPlayer.selection; //make thiss current player turn
+        console.log('insertval log, this is array1', game.boardStack.gameBoard.gameArray)
+        gameEvaluator();
         // }
       }
       return {insertValue};
