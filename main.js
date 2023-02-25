@@ -44,21 +44,27 @@ const game = (() => {
     return {player1, player2}
   })();
 
-  
-  const turnNum = (function(n) {
-    return function() {
-      n += 1;
-      
-      return n;
-    }
-  }(0));
+  const turnCreation = () => {
+    n = 0
+    return {
+      getTurn() {
+        return n;
+      },
+      incrementTurn() {
+        n += 1;
+      }
+    };
+  }
+
+  const playerTurn = turnCreation();
 
   function gamePlay(){
     if(playerControl.player1 != '' && playerControl.player2 != '') {
       function insertValue(target) {
         let currentPlayer;
-        
-        if(turnNum() % 2 === 0) {
+        playerTurn.incrementTurn();
+        console.log(playerTurn.getTurn());
+        if(playerTurn.getTurn() % 2 === 0) {
           currentPlayer = playerControl.player2;
         } else {
           currentPlayer = playerControl.player1;
