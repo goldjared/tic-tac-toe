@@ -112,6 +112,7 @@ const game = (() => {
         array.every(isMatchingKey) === false) {
         console.log('draw');
         result = 'draw';
+        gameEnd(result);
       }
 
       if(array.every(isMatchingKey) === true){
