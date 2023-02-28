@@ -7,14 +7,15 @@ const game = (() => {
 
     function gameBoardCreate() {
       const gameBoardContainer = document.querySelector('.board-container');
-      // for(let i = 1; i < 10; i++){
-      //   const gameSquare= [i];
-      //   console.log(gameSquare)
-      //   // const gameSquare = document.createElement('div');
-      //   // gameSquare.classList.add('game-square');
-      //   // gameSquare.dataset.value = [i];
-      //   // gameBoardContainer.appendChild(gameSquare);
-      // }
+      for(let i = 0; i < 9; i++){
+        // const gameSquare= [i];
+        // console.log(gameSquare)
+        const gameSquare = document.createElement('div');
+        gameSquare.classList.add('game-square');
+        gameSquare.dataset.value = [i];
+        gameBoardContainer.appendChild(gameSquare);
+      }
+      
     };
 
     return {gameBoard, gameBoardCreate};
