@@ -69,6 +69,11 @@ const game = (() => {
     }
     gamePlay().insertValue(e.target.dataset.value);
     displayControl().boardDisplay(e.target);
+    console.log('3', playerTurn.getTurn().selection)
+  });
+  const resetButton = document.querySelector('.reset-btn');
+    resetButton.addEventListener('click', () => {
+      gameEnd();
   });
 
   function gamePlay(){
