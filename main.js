@@ -59,6 +59,18 @@ const game = (() => {
 
   const playerTurn = turnCreation();
 
+  const boardInput = document.querySelector('.board-container');
+  boardInput.addEventListener('click', (e) => {
+    console.log(e.target.dataset.value);
+    console.log(e.target);
+    if(game.boardStack.gameBoard.gameArray[e.target.dataset.value] != null) {
+      alert('error');
+      return;
+    }
+    gamePlay().insertValue(e.target.dataset.value);
+    displayControl().boardDisplay(e.target);
+  });
+
   function gamePlay(){
     if(playerControl.player1 != '' && playerControl.player2 != '') {
       function insertValue(target) {
