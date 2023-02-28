@@ -49,7 +49,12 @@ const game = (() => {
     n = 0
     return {
       getTurn() {
-        return n;
+        if (n % 2 === 0) {
+          return playerControl.player2;
+        } else {
+          return playerControl.player1;
+        }
+        // return n;
       },
       incrementTurn() {
         n += 1;
