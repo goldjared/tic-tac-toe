@@ -45,6 +45,25 @@ const game = (() => {
     return {player1, player2}
   })();
 
+  function displayControl() {
+    function playerDisplay(){
+      const playerContainer = document.querySelector('.player-info');
+      for(let i = 1; i < 3; i++) {
+        const playerName = document.createElement('div');
+        playerName.classList.add('.player-name');
+        playerContainer.appendChild(playerName);
+        // playerName.textContent = `Player ${[i]}: ${playerContainer.player[i]}`
+        playerName.textContent = `Player ${[i]}: ${playerControl['player' + [i]].name}`;
+
+      }
+    }
+    function boardDisplay(square){
+      const gameSquareMod = square;
+      gameSquareMod.textContent = `${playerTurn.getTurn().selection}`;
+    }
+    return {playerDisplay, boardDisplay};
+  }
+
   const turnCreation = () => {
     n = 0
     return {
