@@ -162,9 +162,8 @@ const game = (() => {
         console.log(array, 'winner');
         result = 'win';
         (array[0] === playerControl.player1.selection) 
-        ? console.log(`${playerControl.player1.name} WON!`) 
-        : console.log(`${playerControl.player2.name} WON!`);
-        gameEnd(result);
+        ? displayControl().resultDisplay(`${playerControl.player1.name} WON!`) 
+        : displayControl().resultDisplay(`${playerControl.player2.name} WON!`);
         
       };
     };
