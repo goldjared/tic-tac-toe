@@ -168,14 +168,23 @@ const game = (() => {
       };
     };
 
-    function gameEnd(result) {
-        game.boardStack.gameBoard.gameArray = [null, null, null, null, null, null, null, null, null];
-        game.playerTurn = turnCreation();
-        console.log('result', result);
-        // isEvalutionEqual.result = '';
-        console.log('this is gameEnd log', game.boardStack.gameBoard.gameArray);
-        console.log('this is gameEnd log', playerTurn.getTurn());
-      }
+  function gameEnd() {
+    game.playerTurn = turnCreation();
+    (function clearGameBoard() {
+      game.boardStack.gameBoard.gameArray = [null, null, null, null, null, null, null, null, null];
+      const gameBoardContainer = document.querySelector('.board-container');
+      while(gameBoardContainer.firstChild) {
+      gameBoardContainer.removeChild(gameBoardContainer.lastChild);
+    }
+    }())
+
+    boardStack.gameBoardCreate();
+    
+    // console.log('result', result);
+    // isEvalutionEqual.result = '';
+    console.log('this is gameEnd log', game.boardStack.gameBoard.gameArray);
+    console.log('this is gameEnd log', playerTurn.getTurn());
+    }
     return {isEvalutionEqual};
   };
 
