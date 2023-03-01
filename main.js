@@ -171,6 +171,7 @@ const game = (() => {
 
   function gameEnd() {
     game.playerTurn = turnCreation();
+    displayControl().resultDisplay();
     (function clearGameBoard() {
       game.boardStack.gameBoard.gameArray = [null, null, null, null, null, null, null, null, null];
       const gameBoardContainer = document.querySelector('.board-container');
