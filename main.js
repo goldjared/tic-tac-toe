@@ -155,7 +155,7 @@ const game = (() => {
         array.every(isMatchingKey) === false) {
         console.log('draw');
         result = 'draw';
-        gameEnd(result);
+        displayControl().resultDisplay('Draw.');
       }
 
       if(array.every(isMatchingKey) === true){
