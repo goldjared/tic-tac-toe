@@ -167,6 +167,19 @@ const game = (() => {
         
       };
     };
+    
+    return {isEvalutionEqual};
+  };
+  const gameStart = document.querySelector('.start-btn');
+  gameStart.addEventListener('click', () => {
+    gameStart.style.display = 'none';
+    startGame();
+  });
+
+  function startGame() {
+    boardStack.gameBoardCreate();
+    displayControl().playerDisplay();
+  }
 
   function gameEnd() {
     game.playerTurn = turnCreation();
