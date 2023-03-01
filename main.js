@@ -85,8 +85,9 @@ const game = (() => {
 
   const boardInput = document.querySelector('.board-container');
   boardInput.addEventListener('click', (e) => {
-    console.log(e.target.dataset.value);
-    console.log(e.target);
+    if(e.target.dataset.value === undefined) {
+      return;
+    };
     if(game.boardStack.gameBoard.gameArray[e.target.dataset.value] != null) {
       alert('error');
       return;
