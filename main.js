@@ -20,15 +20,15 @@ const boardStack = (() => {
 })();
 
 const playerControl = (() => {
-  const player1 = makePlayer(prompt('Player, enter name, and weapon (name, x/o)')
-  .split(','));
-  const player2 = makePlayer(prompt('Player, enter name, and weapon (name, x/o)')
-  .split(','));
+  const player1 = makePlayer(prompt('Player 1, enter name')
+  , 'x');
+  const player2 = makePlayer(prompt('Player 2, enter name')
+  , 'o');
 
-  function makePlayer(entry){
+  function makePlayer(name, value){
     return {
-      name: entry[0],
-      selection: entry[1]
+      name: name,
+      selection: value
     }
   }
   
