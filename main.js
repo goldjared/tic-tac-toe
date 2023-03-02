@@ -3,7 +3,6 @@ const game = (() => {
 const boardStack = (() => {
   const gameBoard = {
     gameArray: [null, null, null, null, null, null, null, null, null]
-    //gameArray: ['x', 'k', 'a', 'a', 'f', 'j', 'k', null, null]
   }
 
   function gameBoardCreate() {
@@ -15,35 +14,23 @@ const boardStack = (() => {
       gameSquare.dataset.value = [i];
       gameBoardContainer.appendChild(gameSquare);
     }
-    
   };
 
   return {gameBoard, gameBoardCreate};
 })();
 
 const playerControl = (() => {
-  // const player1 = makePlayer(prompt('Player, enter name, and weapon (name, x/o)')
-  // .split(','));
-  // const player2 = makePlayer(prompt('Player, enter name, and weapon (name, x/o)')
-  // .split(','));
-  
-  const player1 = {
-    name: 'john',
-    selection: 'x'
-  };
-  const player2 = {
-    name: 'doe',
-    selection: 'o'
-  };
-  
-  
+  const player1 = makePlayer(prompt('Player, enter name, and weapon (name, x/o)')
+  .split(','));
+  const player2 = makePlayer(prompt('Player, enter name, and weapon (name, x/o)')
+  .split(','));
 
-  // function makePlayer(entry){
-  //   return {
-  //     name: entry[0],
-  //     selection: entry[1]
-  //   }
-  // }
+  function makePlayer(entry){
+    return {
+      name: entry[0],
+      selection: entry[1]
+    }
+  }
   
   return {player1, player2}
 })();
@@ -83,7 +70,6 @@ const turnCreation = () => {
       } else {
         return playerControl.player1;
       }
-      // return n;
     },
     incrementTurn() {
       n += 1;
@@ -94,7 +80,9 @@ const turnCreation = () => {
 const playerTurn = turnCreation();
 
 const boardInput = document.querySelector('.board-container');
-boardInput.addEventListener('click', (e) => {
+boardInput.addEventListener('click', boardInputEntry);
+
+function boardInputEntry(e) {
   if(e.target.dataset.value === undefined) {
     return;
   };
@@ -103,7 +91,7 @@ boardInput.addEventListener('click', (e) => {
   }
   gamePlay().insertValue(e.target.dataset.value);
   displayControl().boardDisplay(e.target);
-});
+};
 
 const resetButton = document.querySelector('.reset-btn');
 resetButton.style.display = 'none';
@@ -150,11 +138,12 @@ const gameEvaluator = () => {
     currentValue != null;
     const isMatchingKey = (currentValue) => 
     currentValue === array[0] && currentValue != null;
-    
+
     if(array.every(isMatchingKey) === true){
       (array[0] === playerControl.player1.selection) 
       ? displayControl().resultDisplay(`${playerControl.player1.name} WON!`) 
       : displayControl().resultDisplay(`${playerControl.player2.name} WON!`);
+      boardInput.removeEventListener('click', boardInputEntry)
     };
 
     if(game.boardStack.gameBoard.gameArray.length > 7 &&
@@ -162,6 +151,7 @@ const gameEvaluator = () => {
       .every(noNullValue) === true &&
       array.every(isMatchingKey) === false) {
       displayControl().resultDisplay('Draw.');
+      boardInput.removeEventListener('click', boardInputEntry)
     }
   };
   
@@ -181,6 +171,7 @@ function startGame() {
 };
 
 function gameEnd() {
+  boardInput.addEventListener('click', boardInputEntry);
   game.playerTurn = turnCreation();
   displayControl().resultDisplay();
   (function clearGameBoard() {
