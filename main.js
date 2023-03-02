@@ -150,6 +150,12 @@ const gameEvaluator = () => {
     currentValue != null;
     const isMatchingKey = (currentValue) => 
     currentValue === array[0] && currentValue != null;
+    
+    if(array.every(isMatchingKey) === true){
+      (array[0] === playerControl.player1.selection) 
+      ? displayControl().resultDisplay(`${playerControl.player1.name} WON!`) 
+      : displayControl().resultDisplay(`${playerControl.player2.name} WON!`);
+    };
 
     if(game.boardStack.gameBoard.gameArray.length > 7 &&
       game.boardStack.gameBoard.gameArray
@@ -157,13 +163,6 @@ const gameEvaluator = () => {
       array.every(isMatchingKey) === false) {
       displayControl().resultDisplay('Draw.');
     }
-
-    if(array.every(isMatchingKey) === true){
-      (array[0] === playerControl.player1.selection) 
-      ? displayControl().resultDisplay(`${playerControl.player1.name} WON!`) 
-      : displayControl().resultDisplay(`${playerControl.player2.name} WON!`);
-    };
-    
   };
   
   return {isEvalutionEqual};
