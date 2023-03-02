@@ -95,8 +95,6 @@ const playerTurn = turnCreation();
 
 const boardInput = document.querySelector('.board-container');
 boardInput.addEventListener('click', (e) => {
-  // if(gameEvaluator.isEvalutionEqual.getResult() != )
-  console.log(gameEvaluator().getResult());
   if(e.target.dataset.value === undefined) {
     return;
   };
@@ -104,9 +102,7 @@ boardInput.addEventListener('click', (e) => {
     return;
   }
   gamePlay().insertValue(e.target.dataset.value);
-  console.log('2', playerTurn.getTurn().selection)
   displayControl().boardDisplay(e.target);
-  console.log('3', playerTurn.getTurn().selection)
 });
 
 const resetButton = document.querySelector('.reset-btn');
@@ -121,7 +117,6 @@ function gamePlay(){
     function insertValue(target) {
       let currentPlayer;
       playerTurn.incrementTurn();
-      console.log('gamePlay insert getTurn', playerTurn.getTurn());
       currentPlayer = playerTurn.getTurn();
 
       game.boardStack.gameBoard.gameArray[target] = 
@@ -160,26 +155,20 @@ const gameEvaluator = () => {
       game.boardStack.gameBoard.gameArray
       .every(noNullValue) === true &&
       array.every(isMatchingKey) === false) {
-      getResult('draw');
       displayControl().resultDisplay('Draw.');
     }
 
     if(array.every(isMatchingKey) === true){
-      getResult('win');
       (array[0] === playerControl.player1.selection) 
       ? displayControl().resultDisplay(`${playerControl.player1.name} WON!`) 
       : displayControl().resultDisplay(`${playerControl.player2.name} WON!`);
-      
     };
     
   };
-  function getResult(result) {
-    const resultHolder = result;
-    return resultHolder;
-  }
   
-  return {isEvalutionEqual, getResult};
+  return {isEvalutionEqual};
 };
+
 const gameStart = document.querySelector('.start-btn');
 gameStart.addEventListener('click', () => {
   gameStart.style.display = 'none';
